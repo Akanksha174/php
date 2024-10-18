@@ -23,7 +23,7 @@
         Registration Form
     </h2>
 
-    <label class="tt" for="">Full name</label><br>
+    <label class="tt" for="">Full Name</label><br>
     <input class="hello" type="text" name="name1" placeholder="First" required> <input type="text" name="name2" placeholder="Last" required> <br><br>
 
     <label class="tt" for="">Institution</label><br>
