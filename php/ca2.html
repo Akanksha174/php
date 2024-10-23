@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $registration_type = isset($_POST['registration_type']) ? $_POST['registration_type'] : [];
+
+    echo "<h2>Form Data</h2>";
+    echo "First Name: " . htmlspecialchars($first_name) . "<br>";
+    echo "Last Name: " . htmlspecialchars($last_name) . "<br>";
+    echo "Email: " . htmlspecialchars($email) . "<br>";
+    echo "Phone: " . htmlspecialchars($phone) . "<br>";
+
+    if (!empty($registration_type)) {
+        echo "Registration Type(s): " . implode(", ", $registration_type) . "<br>";
+    } else {
+        echo "No registration type selected.<br>";
+    }
+}
+?>
+
+<h2>Registration Form</h2>
+
+<form action="form.php" method="POST">
+    <label for="first-name">First Name:</label><br>
+    <input type="text" id="first-name" name="first_name" required><br><br>
+
+    <label for="last-name">Last Name:</label><br>
+    <input type="text" id="last-name" name="last_name" required><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="phone">Phone:</label><br>
+    <input type="tel" id="phone" name="phone" required><br><br>
+
+    <label>Registration Type:</label><br>
+    <input type="checkbox" name="registration_type[]" value="Regular Registration"> Regular Registration<br>
+    <input type="checkbox" name="registration_type[]" value="Business Registration"> Business Registration<br>
+    <input type="checkbox" name="registration_type[]" value="Student Registration"> Student Registration<br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+</body>
+</html>
